@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatInputModule } from '@angular/material/input';
 
+const MarterialComponents = [MatRadioModule, MatCheckboxModule, MatInputModule];
 @NgModule({
   declarations: [],
-  imports: [CommonModule],
+  imports: [MarterialComponents],
+  exports: [MarterialComponents],
 })
 export class MaterialModule {}

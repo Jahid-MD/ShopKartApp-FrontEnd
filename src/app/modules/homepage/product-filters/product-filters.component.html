@@ -1,0 +1,40 @@
+<div class="ps-4 pt-2">
+  <h2 class="fs-3">Filters</h2>
+  <label id="Department" class="fw-bold">Department</label>
+  <mat-radio-group
+    aria-labelledby="Department"
+    class="dept-radio-group"
+    [(ngModel)]="fashion"
+  >
+    <mat-radio-button value="Men" class="dept-radio-button">
+      Men Fashion
+    </mat-radio-button>
+    <mat-radio-button value="Women" class="dept-radio-button">
+      Women Fashion
+    </mat-radio-button>
+    <mat-radio-button value="All" class="dept-radio-button">
+      All
+    </mat-radio-button>
+  </mat-radio-group>
+  <div class="cat-select">
+    <h4 class="mb-3 fw-bold">Categories</h4>
+    <p><mat-checkbox>Clothing</mat-checkbox></p>
+    <p>
+      <mat-checkbox>Accessories</mat-checkbox>
+    </p>
+    <p><mat-checkbox>All</mat-checkbox></p>
+  </div>
+  <div class="range-container">
+    <p class="fw-bold">Range</p>
+    <div class="d-flex flex-wrap justify-content-between pe-4">
+      <mat-form-field class="range col-5" appearance="outline">
+        <mat-label>Min.</mat-label>
+        <input matInput type="number" />
+      </mat-form-field>
+      <mat-form-field class="range col-5" appearance="outline">
+        <mat-label>Max.</mat-label>
+        <input matInput type="number" />
+      </mat-form-field>
+    </div>
+  </div>
+</div>

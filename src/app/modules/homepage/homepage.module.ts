@@ -6,7 +6,7 @@ import { HomepageRoutingModule } from './homepage-routing.module';
 import { HomepageComponent } from './homepage.component';
 import { ProductContainerComponent } from './product-container/product-container.component';
 import { ProductFiltersComponent } from './product-filters/product-filters.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,6 +14,12 @@ import { FormsModule } from '@angular/forms';
     ProductContainerComponent,
     ProductFiltersComponent,
   ],
-  imports: [CommonModule, MaterialModule, HomepageRoutingModule, FormsModule],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    HomepageRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
 export class HomepageModule {}

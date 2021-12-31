@@ -1,40 +1,56 @@
 <div class="container ms-4">
   <ng-container>
-    <h2 class="fs-2 mt-2">Clothing for Men and Women</h2>
+    <h2 class="fs-2 mt-2">Clothing</h2>
     <div class="card-container d-flex flex-wrap">
-      <div class="col-3 p-4">
-        <div class="product-card col shadow-sm rounded-3">
-          <img
-            src="https://rukminim1.flixcart.com/image/800/960/kt0enww0/shirt/r/z/e/m-a1atw198-tommy-hilfiger-original-imag6g7fgfywz28n.jpeg?q=50"
-          />
-          <div class="product-meta ps-3 py-2">
-            <p class="product-name fw-bold">
-              Men Regular Fit Checkered Spread Collar Casual Shirt
-            </p>
-            <p class="brand-name">Tommy Hilfiger</p>
-            <p class="text-success fw-bold">Rs. 2599</p>
+      <ng-container *ngFor="let product of productData['keys']">
+        <ng-container *ngIf="!productData[product]['isAccessory']">
+          <div class="col-3 p-4">
+            <div class="product-card col shadow-sm rounded-3">
+              <div class="img-wrapper">
+                <img [src]="productData[product]['photo']" />
+              </div>
+              <div class="product-meta ps-3 py-2">
+                <p class="product-name fw-bold">
+                  {{ productData[product]["name"] }}
+                </p>
+                <p class="brand-name">
+                  {{ productData[product]["brand"] }}
+                </p>
+                <p class="text-success fw-bold">
+                  {{ productData[product]["price"] }}
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </ng-container>
+      </ng-container>
     </div>
   </ng-container>
   <ng-container>
-    <h2 class="fs-2 mt-2">Accessories for Men and Women</h2>
+    <h2 class="fs-2 mt-2">Accessories</h2>
     <div class="card-container d-flex flex-wrap">
-      <div class="col-3 p-4">
-        <div class="product-card col shadow-sm rounded-3">
-          <img
-            src="https://rukminim1.flixcart.com/image/800/960/kt0enww0/shirt/r/z/e/m-a1atw198-tommy-hilfiger-original-imag6g7fgfywz28n.jpeg?q=50"
-          />
-          <div class="product-meta ps-3 py-2">
-            <p class="product-name fw-bold">
-              Men Regular Fit Checkered Spread Collar Casual Shirt
-            </p>
-            <p class="brand-name">Tommy Hilfiger</p>
-            <p class="text-success fw-bold">Rs. 2599</p>
+      <ng-container *ngFor="let product of productData['keys']">
+        <ng-container *ngIf="productData[product]['isAccessory']">
+          <div class="col-3 p-4">
+            <div class="product-card col shadow-sm rounded-3">
+              <div class="img-wrapper">
+                <img [src]="productData[product]['photo']" />
+              </div>
+              <div class="product-meta ps-3 py-2">
+                <p class="product-name fw-bold">
+                  {{ productData[product]["name"] }}
+                </p>
+                <p class="brand-name">
+                  {{ productData[product]["brand"] }}
+                </p>
+                <p class="text-success fw-bold">
+                  {{ productData[product]["price"] }}
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </ng-container>
+      </ng-container>
     </div>
   </ng-container>
 </div>

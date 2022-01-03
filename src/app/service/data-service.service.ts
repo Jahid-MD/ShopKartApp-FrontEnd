@@ -7,7 +7,6 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class DataService {
   productData: object = {};
-
   productDataSubject = new BehaviorSubject(this.productData);
   constructor(private http: HttpClient) {}
   getintialProductData() {
@@ -45,11 +44,11 @@ export class DataService {
 
     console.log(
       `./api called`,
-      `./api/products?isAccessory=${filterObj.isAccessory}&isMenFashion=${filterObj.isMenFashion}`
+      `./api/products?isAccessory=${filterObj.isAccessory}&isMenFashion=${filterObj.isMenFashion}&min=${filterData.minPrice}&max=${filterData.maxPrice}`
     );
     this.http
       .get(
-        `./api/products?isAccessory=${filterObj.isAccessory}&isMenFashion=${filterObj.isMenFashion}`
+        `./api/products?isAccessory=${filterObj.isAccessory}&isMenFashion=${filterObj.isMenFashion}&min=${filterData.minPrice}&max=${filterData.maxPrice}`
       )
       .subscribe((data) => {
         this.productDataSubject.next(data);

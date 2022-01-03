@@ -8,12 +8,24 @@ import { DataService } from 'src/app/service/data-service.service';
 })
 export class ProductContainerComponent implements OnInit {
   productData: object;
-  constructor(private dataService: DataService) {
+  isAccessory: boolean;
+  isClothing: boolean;
+  constructor(private dataService: DataService) {}
+
+  ngOnInit(): void {
     this.dataService.productDataSubject.subscribe((data) => {
       this.productData = data;
       console.log(this.productData);
+      if (data['keys']) {
+        this.productData['keys'].map((key) => {
+          if (this.productData[key].isAccessory == true) {
+            this.isAccessory = true;
+          } else {
+            this.isClothing = true;
+            console.log('clothin ix true');
+          }
+        });
+      }
     });
   }
-
-  ngOnInit(): void {}
 }

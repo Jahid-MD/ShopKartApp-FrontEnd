@@ -1,0 +1,21 @@
+.wrapper {
+  width: 1200px;
+  margin: 0 auto;
+  .img-wrapper {
+    width: 450px;
+    img {
+      width: 100%;
+    }
+  }
+  .price {
+    color: #009688;
+  }
+  .description-text {
+    font-size: 20px;
+  }
+  .btn-success {
+    background: #009688;
+    color: white;
+    font-size: 18px;
+  }
+}

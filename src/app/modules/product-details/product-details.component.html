@@ -1,1 +1,26 @@
-<p>product-details works!</p>
+<ng-container *ngIf="productData">
+  <div class="d-flex wrapper pt-5">
+    <div class="img-wrapper">
+      <img [src]="productData['photo']" alt="" />
+    </div>
+    <div class="ps-5">
+      <h1 class="fs-1 lh-sm">
+        {{ productData["name"] }}
+      </h1>
+      <p class="fs-3 text-secondary lh-sm"></p>
+      <p class="fs-4 lh-sm mt-4">
+        Price: RS. <span class="price">{{ productData["price"] }}</span>
+      </p>
+      <p class="fs-3 lh-sm mt-4">Description</p>
+      <p class="description-text py-2 lh-sm">
+        {{ productData["description"] }}
+      </p>
+      <button
+        class="btn btn-lg btn-success fw-bold px-4"
+        (click)="sendToCart(productData['id'])"
+      >
+        Add to Cart
+      </button>
+    </div>
+  </div>
+</ng-container>

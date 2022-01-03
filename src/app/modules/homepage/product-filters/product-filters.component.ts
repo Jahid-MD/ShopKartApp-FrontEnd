@@ -18,8 +18,8 @@ export class ProductFiltersComponent implements OnInit {
       isCatClothing: [''],
       isCatAccessories: [''],
       isCatAll: [true],
-      minPrice: ['', Validators.min(0)],
-      maxPrice: ['', Validators.max(6000)],
+      minPrice: ['0', Validators.min(0)],
+      maxPrice: ['Infinity', Validators.max(6000)],
     });
   }
 
@@ -30,7 +30,7 @@ export class ProductFiltersComponent implements OnInit {
     });
   }
   submitFilterData() {
-    // console.log(this.filterForm.value);
+    console.log(this.filterForm.value);
     this.dataService.getProductData(this.filterForm.value);
   }
 }

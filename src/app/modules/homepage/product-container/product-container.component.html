@@ -1,11 +1,14 @@
 <div class="container ms-4">
-  <ng-container>
+  <ng-container *ngIf="isClothing">
     <h2 class="fs-2 mt-2">Clothing</h2>
     <div class="card-container d-flex flex-wrap">
       <ng-container *ngFor="let product of productData['keys']">
         <ng-container *ngIf="!productData[product]['isAccessory']">
           <div class="col-3 p-4">
-            <div class="product-card col shadow-sm rounded-3">
+            <div
+              class="product-card col shadow-sm rounded-3"
+              [routerLink]="'/product/' + productData[product].id"
+            >
               <div class="img-wrapper">
                 <img [src]="productData[product]['photo']" />
               </div>
@@ -17,7 +20,7 @@
                   {{ productData[product]["brand"] }}
                 </p>
                 <p class="text-success fw-bold">
-                  {{ productData[product]["price"] }}
+                  Rs. {{ productData[product]["price"] }}
                 </p>
               </div>
             </div>
@@ -26,7 +29,7 @@
       </ng-container>
     </div>
   </ng-container>
-  <ng-container>
+  <ng-container *ngIf="isAccessory">
     <h2 class="fs-2 mt-2">Accessories</h2>
     <div class="card-container d-flex flex-wrap">
       <ng-container *ngFor="let product of productData['keys']">
@@ -44,7 +47,7 @@
                   {{ productData[product]["brand"] }}
                 </p>
                 <p class="text-success fw-bold">
-                  {{ productData[product]["price"] }}
+                  Rs. {{ productData[product]["price"] }}
                 </p>
               </div>
             </div>

@@ -5,17 +5,15 @@
     <p class="brand-name fw-bold me-5">
       Shop<span class="fw-light">kart</span>
     </p>
-    <p class="fs-5 me-4">Clothing</p>
-    <p class="fs-5">Accessories</p>
+    <p class="fs-5 me-4">
+      <a class="text-decoration-none" href="#clothing">Clothing</a>
+    </p>
+    <p class="fs-5">
+      <a class="text-decoration-none" href="#accessory">Accessories</a>
+    </p>
   </div>
   <div
-    class="
-      search-container
-      col-4
-      d-flex
-      justify-content-center
-      align-self-center
-    "
+    class="search-container col-4 d-flex justify-content-center align-self-center"
   >
     <input
       #inputSearch
@@ -28,8 +26,9 @@
     </button>
   </div>
   <div class="profile-cart ps-5 col-2 d-flex align-items-center">
-    <div class="cart col-4">
+    <div class="cart col-4 position-relative">
       <i class="fas fa-shopping-cart" routerLink="/cart"></i>
+      <p class="position-absolute">{{ CartQty }}</p>
     </div>
     <div class="col-8">
       <img

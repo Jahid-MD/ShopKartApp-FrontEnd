@@ -3,15 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { AddProductRoutingModule } from './add-product-routing.module';
 import { AddProductComponent } from './add-product.component';
-
+import { MaterialModule } from '../material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    AddProductComponent
-  ],
+  declarations: [AddProductComponent],
   imports: [
     CommonModule,
-    AddProductRoutingModule
-  ]
+    AddProductRoutingModule,
+    MaterialModule,
+    ReactiveFormsModule,
+  ],
 })
-export class AddProductModule { }
+export class AddProductModule {}

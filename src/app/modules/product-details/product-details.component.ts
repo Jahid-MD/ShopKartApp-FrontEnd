@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/service/data-service.service';
 
 @Component({
   selector: 'app-product-details',
@@ -11,7 +12,11 @@ export class ProductDetailsComponent implements OnInit {
   productData: object;
 
   param: string = this.route.url.split('/').pop();
-  constructor(private route: Router, private http: HttpClient) {}
+  constructor(
+    private route: Router,
+    private http: HttpClient,
+    private dataService: DataService
+  ) {}
 
   ngOnInit(): void {
     console.log(this.param);
@@ -22,5 +27,6 @@ export class ProductDetailsComponent implements OnInit {
   }
   sendToCart(id) {
     this.http.post(`./api/cart/${id}`, {}).subscribe();
+    this.dataService.updateCart();
   }
 }

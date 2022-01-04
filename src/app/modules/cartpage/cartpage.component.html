@@ -1,1 +1,40 @@
-<p>cartpage works!</p>
+<div class="container pt-5 pb-5">
+  <h1 class="fs-1">Checkout</h1>
+
+  <ng-container *ngIf="cartData['keys'].length > 0; else elseBlock">
+    <p class="fs-4 lh-lg">Total Items : {{ sumData["totalQty"] }}</p>
+    <div class="d-flex">
+      <div class="col-6 d-flex flex-column pe-3">
+        <ng-container *ngFor="let product of cartData['keys']">
+          <div class="d-flex shadow-sm p-2 align-items-center mt-2">
+            <div class="img-wrapper">
+              <img [src]="cartData[product]['photo']" alt="" />
+            </div>
+            <div class="ps-3 pt-2">
+              <p class="fs-5 lh-sm">
+                {{ cartData[product]["name"] }}
+              </p>
+              <p class="fs-6 lh-sm">x{{ cartData[product]["qty"] }}</p>
+              <p class="fs-6">
+                Amount : RS <span>{{ cartData[product]["price"] }}</span>
+              </p>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+      <div class="col-6 ps-3">
+        <div class="col p-3 shadow-sm">
+          <p class="fs-3 lh-sm">Total Amount</p>
+          <p class="fs-4 lh-lg">
+            Amount : Rs.
+            <span class="fw-bold">{{ sumData["totalAmount"] }}</span>
+          </p>
+          <button class="btn btn-success mt-3">Placeorder</button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #elseBlock>
+    <p>No Product Available</p>
+  </ng-template>
+</div>

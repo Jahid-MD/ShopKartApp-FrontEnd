@@ -23,5 +23,21 @@
     i {
       cursor: pointer;
     }
+    p {
+      text-align: center;
+      padding-top: 1px;
+      padding-right: 1px;
+      font-size: 14px;
+      top: -17px;
+      right: 12px;
+      color: white;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #009688;
+    }
   }
+}
+a {
+  color: #212529;
 }

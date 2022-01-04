@@ -1,1 +1,59 @@
-<p>add-product works!</p>
+<mat-card class="w-75 mt-5 mx-auto p-5 my-5">
+  <mat-card-header class="fs-2 mb-5 text-center">Add Product </mat-card-header>
+  <mat-card-content>
+    <form
+      class="d-flex"
+      [formGroup]="productForm"
+      (change)="display()"
+      (ngSubmit)="submit()"
+    >
+      <div class="d-flex flex-column col-6">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Product Name</mat-label>
+          <input matInput formControlName="name" placeholder="Ex. Men Shirt" />
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Brand Name</mat-label>
+          <input formControlName="brand" matInput placeholder="Ex. Levi's" />
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label> Department</mat-label>
+          <mat-select formControlName="isMenFashion">
+            <mat-option [value]="true">Men's Fashion</mat-option>
+            <mat-option [value]="false">Women's Fashion</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label> Categories</mat-label>
+          <mat-select formControlName="isAccessory">
+            <mat-option [value]="true">Accessory</mat-option>
+            <mat-option [value]="false">Clothing</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Price(Rs.)</mat-label>
+          <input formControlName="price" matInput placeholder="Ex. 500" />
+        </mat-form-field>
+      </div>
+      <div class="ps-5 col-6 d-flex flex-column">
+        <mat-form-field appearance="outline">
+          <mat-label>Textarea</mat-label>
+          <textarea formControlName="description" matInput></textarea>
+        </mat-form-field>
+
+        <div class="my-4">
+          <label class="form-label" for="customFile">Choose Image</label>
+          <input type="file" class="form-control" id="customFile" />
+        </div>
+
+        <button
+          mat-flat-button
+          [disabled]="!productForm.valid"
+          class="add-button align-self-center w-50"
+        >
+          Add Product
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

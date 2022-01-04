@@ -8,9 +8,16 @@ import { DataService } from 'src/app/service/data-service.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  CartQty: number = 0;
   constructor(private http: HttpClient, private dataService: DataService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.dataService.cartSubject.subscribe((data) => {
+      console.log(data, '........');
+      this.CartQty = data;
+    });
+    this.dataService.updateCart();
+  }
 
   getSearchedData(event) {
     console.log(event.value);

@@ -25,8 +25,8 @@ export class CartpageComponent implements OnInit {
     });
   }
   placeOrder() {
-    this.router.navigate(['confirm']);
     this.http.post('/api/placeOrder', {}).subscribe();
     this.dataService.updateCart();
+    this.router.navigate(['confirm']);
   }
 }

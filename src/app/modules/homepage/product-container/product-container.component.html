@@ -1,5 +1,6 @@
 <div class="container ms-4">
   <ng-container *ngIf="isAccessory || isClothing; else elseBox">
+    <!-- Clothing Section -->
     <ng-container *ngIf="isClothing">
       <h2 id="clothing" class="fs-2 mt-2">Clothing</h2>
       <div class="card-container d-flex flex-wrap">
@@ -30,6 +31,7 @@
         </ng-container>
       </div>
     </ng-container>
+    <!-- Accessory Section -->
     <ng-container *ngIf="isAccessory">
       <h2 id="accessory" class="fs-2 mt-2">Accessories</h2>
       <div class="card-container d-flex flex-wrap">

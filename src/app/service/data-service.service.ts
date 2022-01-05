@@ -10,13 +10,15 @@ export class DataService {
   isAdmin: Boolean;
   cartQty: number = 0;
   productData: object = {};
+
   productDataSubject = new BehaviorSubject(this.productData);
   cartSubject = new BehaviorSubject(this.cartQty);
+
   constructor(private http: HttpClient, private router: Router) {}
+
   getintialProductData() {
     this.http.get('./api/products').subscribe((data) => {
       this.productDataSubject.next(data);
-      console.log(data);
     });
   }
   getProductData(filterData) {
@@ -25,6 +27,7 @@ export class DataService {
       isMenFashion: null,
     };
 
+    //setting Fashion
     if (filterData.fashion == 'Men') {
       filterObj.isMenFashion = true;
     } else if (filterData.fashion == 'Women') {
@@ -33,6 +36,7 @@ export class DataService {
       filterObj.isMenFashion = null;
     }
 
+    //setting Categories
     if (
       filterData.isCatAll ||
       (filterData.isCatAccessories && filterData.isCatClothing)
@@ -46,17 +50,12 @@ export class DataService {
       filterObj.isAccessory = null;
     }
 
-    console.log(
-      `./api called`,
-      `./api/products?isAccessory=${filterObj.isAccessory}&isMenFashion=${filterObj.isMenFashion}&min=${filterData.minPrice}&max=${filterData.maxPrice}`
-    );
     this.http
       .get(
         `./api/products?isAccessory=${filterObj.isAccessory}&isMenFashion=${filterObj.isMenFashion}&min=${filterData.minPrice}&max=${filterData.maxPrice}`
       )
       .subscribe((data) => {
         this.productDataSubject.next(data);
-        console.log('api response got', data);
       });
   }
   getTotalAmount(Data: object): object {
@@ -71,9 +70,7 @@ export class DataService {
     return { totalAmount: sum, totalQty: productQty };
   }
   updateCart() {
-    console.log('++++>', this.cartQty);
     this.http.get('/api/cart').subscribe((data) => {
-      console.log(data);
       this.cartQty = this.getTotalAmount(data)['totalQty'];
       this.cartSubject.next(this.cartQty);
     });

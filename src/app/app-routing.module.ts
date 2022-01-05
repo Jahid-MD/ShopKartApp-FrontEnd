@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ErrorComponent } from './components/error/error.component';
 
 const routes: Routes = [
   {
-    path: ' ',
+    path: '',
     loadChildren: () =>
       import('./modules/homepage/homepage.module').then(
         (m) => m.HomepageModule
@@ -44,6 +45,7 @@ const routes: Routes = [
         (m) => m.ConfirmationPageModule
       ),
   },
+  { path: '**', component: ErrorComponent },
 ];
 
 @NgModule({

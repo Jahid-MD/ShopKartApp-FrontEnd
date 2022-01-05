@@ -18,8 +18,8 @@ export class ProductFiltersComponent implements OnInit {
       isCatClothing: [''],
       isCatAccessories: [''],
       isCatAll: [true],
-      minPrice: ['0', Validators.min(0)],
-      maxPrice: ['Infinity', Validators.max(6000)],
+      minPrice: ['', Validators.min(0)],
+      maxPrice: ['Infinity', Validators.max(Infinity)],
     });
   }
 

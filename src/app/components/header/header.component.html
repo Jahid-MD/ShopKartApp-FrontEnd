@@ -1,7 +1,5 @@
-<div
-  class="d-flex justify-content-center align-items-center py-4 ps-5 shadow-sm"
->
-  <div class="text-uppercase d-flex col-5 align-self-center" routerLink="/">
+<div class="wrapper d-flex justify-content-even align-items-center py-4">
+  <div class="text-uppercase col d-flex align-self-center pt-1" routerLink="/">
     <p class="brand-name fw-bold me-5">
       Shop<span class="fw-light">kart</span>
     </p>
@@ -13,24 +11,29 @@
     </p>
   </div>
   <div
-    class="search-container col-4 d-flex justify-content-center align-self-center"
+    class="search-container col-3 ms-4 d-flex justify-content-center align-self-center"
   >
     <input
       #inputSearch
       placeholder="Search Here...."
-      class="w-75"
+      class="w-100"
       type="text"
     />
     <button (click)="getSearchedData(inputSearch)">
       <i class="fas fa-search"></i>
     </button>
   </div>
-  <div class="profile-cart ps-5 col-2 d-flex align-items-center">
-    <div class="cart col-4 position-relative">
+  <div class="profile-cart ps-5 col-4 d-flex align-items-center">
+    <div class="me-2" [ngClass]="!isAdmin ? 'invisible' : ''">
+      <button class="btn btn-success" routerLink="./addProduct">
+        Add Product
+      </button>
+    </div>
+    <div class="cart position-relative me-4">
       <i class="fas fa-shopping-cart" routerLink="/cart"></i>
       <p class="position-absolute">{{ CartQty }}</p>
     </div>
-    <div class="col-8">
+    <div class="col ms-4">
       <img
         width="50"
         src="https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"

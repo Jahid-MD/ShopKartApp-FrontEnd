@@ -1,62 +1,67 @@
 <div class="container ms-4">
-  <ng-container *ngIf="productData">
-    <h2 id="clothing" class="fs-2 mt-2">Clothing</h2>
-    <div class="card-container d-flex flex-wrap">
-      <ng-container *ngFor="let product of productData['keys']">
-        <ng-container *ngIf="!productData[product]['isAccessory']">
-          <div class="col-3 p-4">
-            <div
-              class="product-card col shadow-sm rounded-3"
-              [routerLink]="'/product/' + productData[product].id"
-            >
-              <div class="img-wrapper">
-                <img [src]="productData[product]['photo']" />
-              </div>
-              <div class="product-meta ps-3 py-2">
-                <p class="product-name fw-bold">
-                  {{ productData[product]["name"] }}
-                </p>
-                <p class="brand-name">
-                  {{ productData[product]["brand"] }}
-                </p>
-                <p class="text-success fw-bold">
-                  Rs. {{ productData[product]["price"] }}
-                </p>
-              </div>
-            </div>
-          </div>
-        </ng-container>
-      </ng-container>
-    </div>
-  </ng-container>
-  <ng-container *ngIf="isAccessory">
-    <h2 id="accessory" class="fs-2 mt-2">Accessories</h2>
-    <div class="card-container d-flex flex-wrap">
-      <ng-container *ngFor="let product of productData['keys']">
-        <ng-container *ngIf="productData[product]['isAccessory']">
-          <div class="col-3 p-4">
-            <div
-              class="product-card col shadow-sm rounded-3"
-              [routerLink]="'/product/' + productData[product].id"
-            >
-              <div class="img-wrapper">
-                <img [src]="productData[product]['photo']" />
-              </div>
-              <div class="product-meta ps-3 py-2">
-                <p class="product-name fw-bold">
-                  {{ productData[product]["name"] }}
-                </p>
-                <p class="brand-name">
-                  {{ productData[product]["brand"] }}
-                </p>
-                <p class="text-success fw-bold">
-                  Rs. {{ productData[product]["price"] }}
-                </p>
+  <ng-container *ngIf="isAccessory || isClothing; else elseBox">
+    <ng-container *ngIf="isClothing">
+      <h2 id="clothing" class="fs-2 mt-2">Clothing</h2>
+      <div class="card-container d-flex flex-wrap">
+        <ng-container *ngFor="let product of productData['keys']">
+          <ng-container *ngIf="!productData[product]['isAccessory']">
+            <div class="col-3 p-4">
+              <div
+                class="product-card col shadow-sm rounded-3"
+                [routerLink]="'/product/' + productData[product].id"
+              >
+                <div class="img-wrapper">
+                  <img [src]="productData[product]['photo']" />
+                </div>
+                <div class="product-meta ps-3 py-2">
+                  <p class="product-name fw-bold">
+                    {{ productData[product]["name"] }}
+                  </p>
+                  <p class="brand-name">
+                    {{ productData[product]["brand"] }}
+                  </p>
+                  <p class="text-success fw-bold">
+                    Rs. {{ productData[product]["price"] }}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          </ng-container>
         </ng-container>
-      </ng-container>
-    </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="isAccessory">
+      <h2 id="accessory" class="fs-2 mt-2">Accessories</h2>
+      <div class="card-container d-flex flex-wrap">
+        <ng-container *ngFor="let product of productData['keys']">
+          <ng-container *ngIf="productData[product]['isAccessory']">
+            <div class="col-3 p-4">
+              <div
+                class="product-card col shadow-sm rounded-3"
+                [routerLink]="'/product/' + productData[product].id"
+              >
+                <div class="img-wrapper">
+                  <img [src]="productData[product]['photo']" />
+                </div>
+                <div class="product-meta ps-3 py-2">
+                  <p class="product-name fw-bold">
+                    {{ productData[product]["name"] }}
+                  </p>
+                  <p class="brand-name">
+                    {{ productData[product]["brand"] }}
+                  </p>
+                  <p class="text-success fw-bold">
+                    Rs. {{ productData[product]["price"] }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+    </ng-container>
   </ng-container>
+  <ng-template #elseBox>
+    <p class="display-2">No Data Available</p>
+  </ng-template>
 </div>

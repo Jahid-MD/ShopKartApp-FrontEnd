@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
@@ -5,6 +6,9 @@ import {
   FormBuilder,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { DataService } from 'src/app/service/data-service.service';
+import { SnackbarService } from 'src/app/service/snackbar.service';
 
 @Component({
   selector: 'app-add-product',
@@ -13,7 +17,13 @@ import {
 })
 export class AddProductComponent implements OnInit {
   productForm: FormGroup;
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private dataService: DataService,
+    private http: HttpClient,
+    private snackBarService: SnackbarService
+  ) {
     this.productForm = this.fb.group({
       name: ['', [Validators.required]],
       photo: ['./fbf/fgfdg.png', [Validators.required]],
@@ -28,9 +38,26 @@ export class AddProductComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (!this.dataService.isAdmin) {
+      this.router.navigate(['./']);
+    }
+  }
   submit() {
     console.log(this.productForm);
+    this.http
+      .post('/api/addProduct', { data: this.productForm.value })
+      .subscribe();
+    this.productForm.reset({
+      name: [''],
+      photo: ['./fbf/fgfdg.png'],
+      brand: [''],
+      description: [''],
+      isAccessory: [''],
+      isMenFashion: [''],
+      price: [''],
+    });
+    this.snackBarService.openSnackBar();
   }
   display() {
     console.log(this.productForm.valid);

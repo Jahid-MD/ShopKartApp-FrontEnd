@@ -29,12 +29,14 @@
             Amount : Rs.
             <span class="fw-bold">{{ sumData["totalAmount"] }}</span>
           </p>
-          <button class="btn btn-success mt-3">Placeorder</button>
+          <button class="btn btn-success mt-3" (click)="placeOrder()">
+            Placeorder
+          </button>
         </div>
       </div>
     </div>
   </ng-container>
   <ng-template #elseBlock>
-    <p>No Product Available</p>
+    <p>No Product has been added to cart</p>
   </ng-template>
 </div>

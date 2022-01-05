@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const MarterialComponents = [
   MatRadioModule,
@@ -15,6 +16,7 @@ const MarterialComponents = [
   MatCardModule,
   MatSelectModule,
   MatButtonModule,
+  MatSnackBarModule,
 ];
 @NgModule({
   declarations: [],

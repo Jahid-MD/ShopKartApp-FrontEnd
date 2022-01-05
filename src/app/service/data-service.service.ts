@@ -1,16 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { Router, CanActivate } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
+  isAdmin: Boolean;
   cartQty: number = 0;
   productData: object = {};
   productDataSubject = new BehaviorSubject(this.productData);
   cartSubject = new BehaviorSubject(this.cartQty);
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
   getintialProductData() {
     this.http.get('./api/products').subscribe((data) => {
       this.productDataSubject.next(data);
